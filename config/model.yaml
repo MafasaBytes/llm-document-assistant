@@ -1,8 +1,6 @@
-
-
 llm_config:
-  model: "phi3:latest"
-  temperature: 0.5
+  model: "meditron:7b"
+  temperature: 0.3
   base_url: "http://127.0.0.1:11434"
   num_ctx: 4096
   num_gpu: 1

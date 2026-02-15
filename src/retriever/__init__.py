@@ -1,3 +1,5 @@
 __all__ = [
-    "retriever_qa", "retriever"
+    "retriever_qa",
+    "retriever_qa_with_metadata",
+    "retriever",
 ]

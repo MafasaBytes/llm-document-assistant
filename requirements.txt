@@ -17,7 +17,7 @@ chromadb>=0.5.23
 pypdf>=3.0.0
 
 # Web UI
-gradio>=4.0.0
+gradio>=5.0.0
 
 # Configuration & environment
 pyyaml>=6.0.2

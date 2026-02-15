@@ -1,5 +1,4 @@
 from langchain_community.vectorstores import Chroma
-from pathlib import Path
 import hashlib
 import logging
 import sys
@@ -13,22 +12,13 @@ from embedding.embed_model import get_embedding_model
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Vector store cache — one store per unique document set
-# ---------------------------------------------------------------------------
-
-CHROMA_PERSIST_DIR = Path(__file__).resolve().parents[2] / "chroma_db"
-
 _vectordb_cache: dict[str, Chroma] = {}
 
 
 def _compute_chunks_hash(chunks) -> str:
     """
-    Compute a lightweight hash over document chunks so we can tell whether
+    Compute a SHA-256 hash over document chunks so we can tell whether
     the vector store needs to be rebuilt.
-
-    Uses the first 200 chars of each chunk's page_content to build the hash
-    so it's fast even for large documents.
     """
     hasher = hashlib.sha256()
     for chunk in chunks:
@@ -38,11 +28,11 @@ def _compute_chunks_hash(chunks) -> str:
 
 def vector_database(chunks):
     """
-    Create or return a cached ChromaDB vector store for the given chunks.
+    Create or return a cached in-memory ChromaDB vector store.
 
-    If the same set of chunks has been indexed before (determined by a
-    content hash), the existing in-memory vector store is returned
-    immediately instead of re-embedding and re-writing to disk.
+    Each unique document (identified by a content hash) gets its own
+    isolated store. No data is persisted to disk, so uploading a new
+    PDF never retrieves stale results from a previous document.
 
     Args:
         chunks: List of LangChain Document objects to index.
@@ -71,10 +61,10 @@ def vector_database(chunks):
 
     embed_model = get_embedding_model()
 
+    # Pure in-memory — no persist_directory
     vectordb = Chroma.from_documents(
         documents=chunks,
         embedding=embed_model,
-        persist_directory=str(CHROMA_PERSIST_DIR),
     )
 
     _vectordb_cache[chunks_hash] = vectordb
