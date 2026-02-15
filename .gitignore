@@ -1,0 +1,19 @@
+# Test files
+tests/__pycache__/
+
+# Temp files
+__pycache__/
+.env
+.DS_Store
+.vscode
+.idea
+.pytest_cache
+.ruff_cache
+.gitignore
+.gitignore
+chroma_db/
+.=1.3.0
+.=1.3.9
+
+# UI files
+.gradio/
