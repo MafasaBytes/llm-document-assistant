@@ -1,0 +1,12 @@
+
+
+llm_config:
+  model: "phi3:latest"
+  temperature: 0.5
+  base_url: "http://127.0.0.1:11434"
+  num_ctx: 4096
+  num_gpu: 1
+
+embedding_model:
+  model: "BAAI/bge-large-en-v1.5"
+  cuda: True

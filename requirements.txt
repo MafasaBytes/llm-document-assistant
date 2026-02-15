@@ -1,0 +1,24 @@
+# Core LangChain framework
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-core>=0.1.23
+langchain-text-splitters>=0.0.1
+langchain-ollama>=0.1.0
+langchain-classic>=0.0.1
+
+# Embedding & NLP models
+sentence-transformers>=2.2.2
+huggingface-hub>=0.30.2
+
+# Vector database
+chromadb>=0.5.23
+
+# PDF processing
+pypdf>=3.0.0
+
+# Web UI
+gradio>=4.0.0
+
+# Configuration & environment
+pyyaml>=6.0.2
+python-dotenv>=1.0.1
