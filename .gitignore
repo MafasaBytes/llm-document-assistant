@@ -17,3 +17,6 @@ chroma_db/
 
 # UI files
 .gradio/
+
+# env files
+.env
