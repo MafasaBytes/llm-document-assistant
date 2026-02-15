@@ -19,4 +19,4 @@ chroma_db/
 .gradio/
 
 # env files
-.env
+.env.env
