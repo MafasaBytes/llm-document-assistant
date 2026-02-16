@@ -5,7 +5,8 @@
 A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for question-answering over medical PDF documents. Upload a PDF, ask natural-language questions, and get sourced answers — all running on your own hardware via Ollama.
 
 ## UI Overview
-<img width="1911" height="896" alt="image" src="https://github.com/user-attachments/assets/1796f107-887c-41b9-9395-92aee9f88987" />
+[![Watch the video]
+https://github.com/user-attachments/assets/fa10aaad-69aa-4480-ad3f-c825ce42304e
 ---
 
 ## Features
