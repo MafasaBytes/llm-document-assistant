@@ -1,8 +1,8 @@
-# HealthDoc AI
+# Risk and Compliance DOC-AI
 
 **Intelligent Medical Document Analysis System**
 
-A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for question-answering over medical PDF documents. Upload a PDF, ask natural-language questions, and get sourced answers — all running on your own hardware via Ollama.
+A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for question-answering over risk and compliance PDF documents. Upload a PDF, ask natural-language questions, and get sourced answers — all running on your own hardware via Ollama.
 
 ## UI Overview
 [![Watch the video]
@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/fa10aaad-69aa-4480-ad3f-c825ce42304e
 ## Features
 
 - **PDF Ingestion** — Upload any PDF; pages are extracted, chunked, and embedded automatically.
-- **Local LLM** — Powered by [Ollama](https://ollama.com/) with configurable models (default: `meditron:7b`, a medical-domain LLM).
+- **Local LLM** — Powered by [Ollama](https://ollama.com/) with configurable models (default: `CybersecurityRiskAnalyst`, a cybeer-security LLM).
 - **Semantic Search** — HuggingFace embeddings (`BAAI/bge-large-en-v1.5`) indexed in an in-memory ChromaDB vector store.
 - **Source Attribution** — Every answer cites the page numbers and excerpts it was derived from.
 - **Live Telemetry** — Real-time sidebar showing device (CUDA/CPU), GPU info, model config, and per-query pipeline timing (load, chunk, embed, generate).
@@ -124,7 +124,7 @@ ollama pull meditron:7b
 ```
 
 > **Other medical-domain models you can try:**
-> - `medllama2:7b` — Medical fine-tune of LLaMA 2
+> - `CybersecurityRiskAnalyst` — Cyber security fine-tune of LLaMA 2
 > - `llama3:8b` — General-purpose (strong at medical text)
 >
 > Change the model in `config/model.yaml` and pull it with `ollama pull <model>`.
@@ -135,7 +135,7 @@ Edit `config/model.yaml` to adjust the LLM and embedding settings:
 
 ```yaml
 llm_config:
-  model: "meditron:7b"        # Ollama model name
+  model: "CybersecurityRiskAnalyst"        # Ollama model name
   temperature: 0.3            # Lower = more precise
   base_url: "http://127.0.0.1:11434"
   num_ctx: 4096               # Context window size
@@ -161,7 +161,7 @@ The Gradio UI will launch at **http://127.0.0.1:7860**.
 ### Workflow
 
 1. **Upload** a PDF document using the sidebar file picker.
-2. **Ask** a question in the text input (e.g., *"What are the side effects of the prescribed medication?"*).
+2. **Ask** a question in the text input (e.g., `"What are the top 3 differences between this 2024 update and the previous 2023 version regarding AML checks?"`).
 3. **Read** the streamed answer with source citations (page numbers + excerpts).
 4. **Review** the System Telemetry panel for pipeline timing and hardware info.
 5. **Export** the session as a Markdown report via the "Export Report" button.
@@ -225,4 +225,4 @@ The Gradio 5.x web interface. Features a custom dual-theme CSS system (dark/ligh
 
 ## License
 
-This project is for **research and educational purposes only**. Always consult a qualified healthcare professional for medical advice.
+This project is for **research and educational purposes only**.
