@@ -5,14 +5,13 @@
 A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for question-answering over risk and compliance PDF documents. Upload a PDF, ask natural-language questions, and get sourced answers — all running on your own hardware via Ollama.
 
 ## UI Overview
-[![Watch the video]
-https://github.com/user-attachments/assets/fa10aaad-69aa-4480-ad3f-c825ce42304e
+<img width="1898" height="987" alt="image" src="https://github.com/user-attachments/assets/32b6e47e-b7de-4449-967c-fffa689fc817" />
 ---
 
 ## Features
 
 - **PDF Ingestion** — Upload any PDF; pages are extracted, chunked, and embedded automatically.
-- **Local LLM** — Powered by [Ollama](https://ollama.com/) with configurable models (default: `CybersecurityRiskAnalyst`, a cybeer-security LLM).
+- **Local LLM** — Powered by [Ollama](https://ollama.com/) with configurable models (default: `mistral:7b`, a cybeer-security LLM).
 - **Semantic Search** — HuggingFace embeddings (`BAAI/bge-large-en-v1.5`) indexed in an in-memory ChromaDB vector store.
 - **Source Attribution** — Every answer cites the page numbers and excerpts it was derived from.
 - **Live Telemetry** — Real-time sidebar showing device (CUDA/CPU), GPU info, model config, and per-query pipeline timing (load, chunk, embed, generate).
@@ -135,7 +134,7 @@ Edit `config/model.yaml` to adjust the LLM and embedding settings:
 
 ```yaml
 llm_config:
-  model: "CybersecurityRiskAnalyst"        # Ollama model name
+  model: "mistral:7b"        # Ollama model name
   temperature: 0.3            # Lower = more precise
   base_url: "http://127.0.0.1:11434"
   num_ctx: 4096               # Context window size
