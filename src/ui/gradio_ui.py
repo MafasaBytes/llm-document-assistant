@@ -1,5 +1,5 @@
 """
-HealthDoc AI — Prometheus Surgical HUD Interface
+ComplianceDoc AI — Prometheus Legal HUD Interface
 dark + cyan medical document analysis console.
 Chat-style interaction, typewriter streaming, live telemetry sidebar.
 """
@@ -24,7 +24,6 @@ _STREAM_CHUNK = 3     # words per yield
 _STREAM_DELAY = 0.02  # seconds between yields
 
 # SYSTEM LEVEL DETECTION
-
 def _get_system_info():
     """Detect runtime hardware and read model configuration."""
     info = {}
@@ -69,7 +68,6 @@ def _get_system_info():
 
 
 # HTML / CSS BUILDERS
-
 def _short_name(name):
     """Shorten 'org/model-name' to 'model-name'."""
     return name.split("/")[-1] if "/" in str(name) else str(name)
@@ -193,7 +191,7 @@ def _get_css():
     """Return the full custom CSS for the Prometheus HUD theme."""
     return """
     /* ═══════════════════════════════════════════════
-       HEALTHDOC AI — DUAL-THEME SYSTEM
+       COMPLIANCE AI — DUAL-THEME SYSTEM
        Dark = Prometheus HUD  /  Light = Clinical White
        ═══════════════════════════════════════════════ */
 
@@ -332,47 +330,47 @@ def _get_css():
     .panel, .form { background: transparent !important; border: none !important; }
 
     /* ── chatbot ──────────────────────────────── */
-    #healthdoc-chat {
+    #compliancedoc-chat {
       background: var(--hd-bg-primary) !important;
       border: 1px solid var(--hd-border) !important;
       border-radius: 10px !important;
     }
-    #healthdoc-chat .wrapper {
+    #compliancedoc-chat .wrapper {
       background: transparent !important;
     }
-    #healthdoc-chat .message-wrap {
+    #compliancedoc-chat .message-wrap {
       background: transparent !important;
     }
     /* user bubbles */
-    #healthdoc-chat .message.user,
-    #healthdoc-chat [data-testid="user"] {
+    #compliancedoc-chat .message.user,
+    #compliancedoc-chat [data-testid="user"] {
       background: rgba(0,212,255,0.05) !important;
       border-left: 2px solid rgba(0,212,255,0.30) !important;
       border-radius: 6px !important;
       color: var(--hd-text) !important;
     }
     /* bot bubbles */
-    #healthdoc-chat .message.bot,
-    #healthdoc-chat [data-testid="bot"] {
+    #compliancedoc-chat .message.bot,
+    #compliancedoc-chat [data-testid="bot"] {
       background: rgba(11,18,32,0.50) !important;
       border-left: 2px solid rgba(0,212,255,0.10) !important;
       border-radius: 6px !important;
       color: var(--hd-text) !important;
     }
-    #healthdoc-chat .bot p,
-    #healthdoc-chat [data-testid="bot"] p {
+    #compliancedoc-chat .bot p,
+    #compliancedoc-chat [data-testid="bot"] p {
       color: var(--hd-text) !important;
       line-height: 1.65 !important;
     }
-    #healthdoc-chat .user p,
-    #healthdoc-chat [data-testid="user"] p {
+    #compliancedoc-chat .user p,
+    #compliancedoc-chat [data-testid="user"] p {
       color: var(--hd-text) !important;
     }
     /* markdown inside chat */
-    #healthdoc-chat strong { color: var(--hd-cyan) !important; }
-    #healthdoc-chat em     { color: var(--hd-text2) !important; }
-    #healthdoc-chat hr     { border-color: var(--hd-border) !important; }
-    #healthdoc-chat blockquote {
+    #compliancedoc-chat strong { color: var(--hd-cyan) !important; }
+    #compliancedoc-chat em     { color: var(--hd-text2) !important; }
+    #compliancedoc-chat hr     { border-color: var(--hd-border) !important; }
+    #compliancedoc-chat blockquote {
       border-left: 2px solid var(--hd-border-h) !important;
       background: var(--hd-glow) !important;
       padding: 6px 12px !important;
@@ -384,27 +382,27 @@ def _get_css():
     /* ── LIGHT-MODE overrides ──────────────────── */
 
     /* chatbot container + every nested wrapper */
-    body.hd-light #healthdoc-chat,
-    body.hd-light #healthdoc-chat > *,
-    body.hd-light #healthdoc-chat .wrapper,
-    body.hd-light #healthdoc-chat .message-wrap,
-    body.hd-light #healthdoc-chat .wrap,
-    body.hd-light #healthdoc-chat .panel {
+    body.hd-light #compliancedoc-chat,
+    body.hd-light #compliancedoc-chat > *,
+    body.hd-light #compliancedoc-chat .wrapper,
+    body.hd-light #compliancedoc-chat .message-wrap,
+    body.hd-light #compliancedoc-chat .wrap,
+    body.hd-light #compliancedoc-chat .panel {
       background: var(--hd-bg-primary) !important;
       background-color: var(--hd-bg-primary) !important;
     }
-    body.hd-light #healthdoc-chat {
+    body.hd-light #compliancedoc-chat {
       border-color: var(--hd-border) !important;
     }
 
     /* chat bubbles */
-    body.hd-light #healthdoc-chat .message.user,
-    body.hd-light #healthdoc-chat [data-testid="user"] {
+    body.hd-light #compliancedoc-chat .message.user,
+    body.hd-light #compliancedoc-chat [data-testid="user"] {
       background: rgba(0,119,170,0.06) !important;
       border-left: 2px solid rgba(0,119,170,0.30) !important;
     }
-    body.hd-light #healthdoc-chat .message.bot,
-    body.hd-light #healthdoc-chat [data-testid="bot"] {
+    body.hd-light #compliancedoc-chat .message.bot,
+    body.hd-light #compliancedoc-chat [data-testid="bot"] {
       background: rgba(237,241,245,0.70) !important;
       border-left: 2px solid rgba(0,119,170,0.12) !important;
     }
@@ -616,7 +614,7 @@ def _get_css():
     #hd-file-upload {
       margin-bottom: 16px !important;
     }
-    #healthdoc-chat {
+    #compliancedoc-chat {
       margin-top: 0 !important;
       margin-bottom: 12px !important;
     }
@@ -683,7 +681,6 @@ def _get_css():
     """
 
 # HEADER & FOOTER HTML
-
 _HEADER_HTML = """
 <div id="hd-header-wrap" style="
     display:flex; flex-direction:column; align-items:center;
@@ -698,7 +695,7 @@ _HEADER_HTML = """
                 box-shadow:var(--hd-header-dot-shadow);"></div>
     <span style="color:var(--hd-cyan);font-size:1.45rem;font-weight:700;
                  letter-spacing:0.12em;font-family:'Inter',system-ui,sans-serif;">
-      HEALTHDOC AI
+      Risk & Compliance Cyber-AI
     </span>
     <div style="width:10px;height:10px;border-radius:50%;
                 background:var(--hd-header-dot);
@@ -706,7 +703,7 @@ _HEADER_HTML = """
   </div>
   <div style="color:var(--hd-text2);font-size:0.72rem;letter-spacing:0.22em;
               text-transform:uppercase;margin-top:6px;">
-    Intelligent Medical Document Analysis System
+    Intelligent Risk and Compliance Cyber Document Analysis System
   </div>
   <div style="color:var(--hd-text3);font-size:0.60rem;letter-spacing:0.18em;
               text-transform:uppercase;margin-top:4px;">
@@ -720,12 +717,12 @@ _FOOTER_HTML = """
     border-top:1px solid var(--hd-border);
     padding:14px 4px 4px;
     margin-top:16px;
-    display:flex; justify-content:space-between; align-items:center;
+    display:flex; justify-content:center; align-items:center;
     flex-wrap:wrap; gap:8px;
 ">
   <div style="color:var(--hd-text3);font-size:0.7rem;letter-spacing:0.08em;line-height:1.5;">
     DISCLAIMER — This system is for research purposes only.
-    Always consult a qualified healthcare professional for medical advice.
+    Always consult a qualified compliance professional for legal advice.
   </div>
   <div style="color:var(--hd-text3);font-size:0.62rem;letter-spacing:0.12em;white-space:nowrap;">
     POWERED BY OLLAMA + LANGCHAIN + CHROMADB
@@ -734,7 +731,6 @@ _FOOTER_HTML = """
 """
 
 # EVENT HANDLERS (module-level, stateless)
-
 def _user_message(message, chat_history):
     """Append user message to history and clear the input box."""
     if not message or not message.strip():
@@ -784,7 +780,7 @@ def _generate_report(chat_history, file):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     lines = [
-        "# HealthDoc AI — Analysis Report",
+        "# ComplianceDoc AI — Analysis Report",
         "",
         f"**Generated:** {now}  ",
         f"**Document:** `{doc_name}`  ",
@@ -805,9 +801,9 @@ def _generate_report(chat_history, file):
         lines.append("")
 
     lines.extend([
-        "*This report was generated by HealthDoc AI. "
+        "*This report was generated by ComplianceDoc AI. "
         "It is intended for research purposes only. "
-        "Always consult a qualified healthcare professional for medical advice.*",
+        "Always consult a qualified compliance professional for medical advice.*",
         "",
     ])
 
@@ -817,7 +813,7 @@ def _generate_report(chat_history, file):
     tmp = tempfile.NamedTemporaryFile(
         mode="w",
         suffix=".md",
-        prefix=f"healthdoc_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}_",
+        prefix=f"compliance_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}_",
         delete=False,
         encoding="utf-8",
     )
@@ -938,7 +934,7 @@ def launch_gradio_app():
 
     # layout
     with gr.Blocks(
-        title="HealthDoc AI",
+        title="ComplianceDoc AI",
         theme=theme,
         css=_get_css(),
         js="() => { document.body.classList.add('dark', 'hd-dark'); }",
@@ -976,7 +972,7 @@ def launch_gradio_app():
                 chatbot = gr.Chatbot(
                     value=initial_chat,
                     height=520,
-                    elem_id="healthdoc-chat",
+                    elem_id="compliancedoc-chat",
                     show_label=False,
                     # type="messages",
                 )

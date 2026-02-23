@@ -1,8 +1,9 @@
 from langchain_ollama import OllamaLLM
 
 def get_llm():
+    """Test model endpoint..."""
     llm = OllamaLLM(
-        model="phi3:latest", 
+        model="mistral:7b", 
         base_url="http://127.0.0.1:11434",
         temperature=0.5,
     )

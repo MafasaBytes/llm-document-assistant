@@ -10,9 +10,7 @@ warnings.filterwarnings('ignore')
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
 # HuggingFace token validation
-# ---------------------------------------------------------------------------
 
 def load_hf_token():
     """
@@ -31,9 +29,7 @@ def load_hf_token():
         )
     return hf_token
 
-# ---------------------------------------------------------------------------
 # Lazy-loaded singleton for the embedding model
-# ---------------------------------------------------------------------------
 
 _embed_model_instance = None
 

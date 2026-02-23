@@ -1,5 +1,5 @@
 """
-HealthDoc AI — Entry Point
+CyberAnalyst AI — Entry Point
 
 Launch the medical document analysis application.
 """
@@ -12,7 +12,6 @@ sys.path.append(
 )
 
 from src.ui.gradio_ui import launch_gradio_app
-
 
 if __name__ == "__main__":
     launch_gradio_app()

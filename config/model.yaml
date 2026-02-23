@@ -1,5 +1,5 @@
 llm_config:
-  model: "meditron:7b"
+  model: "mistral:7b"
   temperature: 0.3
   base_url: "http://127.0.0.1:11434"
   num_ctx: 4096

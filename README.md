@@ -1,6 +1,6 @@
-# HealthDoc AI
+# ComplianceDOC AI
 
-**Intelligent Medical Document Analysis System**
+**Intelligent Risk and Compliance Document Analysis System**
 
 A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for question-answering over medical PDF documents. Upload a PDF, ask natural-language questions, and get sourced answers — all running on your own hardware via Ollama.
 
@@ -12,7 +12,7 @@ A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for questio
 ## Features
 
 - **PDF Ingestion** — Upload any PDF; pages are extracted, chunked, and embedded automatically.
-- **Local LLM** — Powered by [Ollama](https://ollama.com/) with configurable models (default: `meditron:7b`, a medical-domain LLM).
+- **Local LLM** — Powered by [Ollama](https://ollama.com/) with configurable models (default: `mistral-large-3:675b-cloud`, a legal-domain LLM).
 - **Semantic Search** — HuggingFace embeddings (`BAAI/bge-large-en-v1.5`) indexed in an in-memory ChromaDB vector store.
 - **Source Attribution** — Every answer cites the page numbers and excerpts it was derived from.
 - **Live Telemetry** — Real-time sidebar showing device (CUDA/CPU), GPU info, model config, and per-query pipeline timing (load, chunk, embed, generate).
@@ -120,11 +120,11 @@ Get your token from [huggingface.co/settings/tokens](https://huggingface.co/sett
 ```bash
 # Install Ollama (see https://ollama.com/download)
 # Then pull the medical model:
-ollama pull meditron:7b
+ollama pull mistral-large-3:675b-cloud
 ```
 
 > **Other medical-domain models you can try:**
-> - `medllama2:7b` — Medical fine-tune of LLaMA 2
+> - `mistral-large-3:675b-cloud` — A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads of LLaMA 2
 > - `llama3:8b` — General-purpose (strong at medical text)
 >
 > Change the model in `config/model.yaml` and pull it with `ollama pull <model>`.
@@ -135,7 +135,7 @@ Edit `config/model.yaml` to adjust the LLM and embedding settings:
 
 ```yaml
 llm_config:
-  model: "meditron:7b"        # Ollama model name
+  model: "mmistral:7b"        # Ollama model name
   temperature: 0.3            # Lower = more precise
   base_url: "http://127.0.0.1:11434"
   num_ctx: 4096               # Context window size
@@ -202,7 +202,7 @@ The Gradio 5.x web interface. Features a custom dual-theme CSS system (dark/ligh
 |---|---|
 | `ConnectionError: Could not connect to Ollama` | Make sure Ollama is running: `ollama serve` |
 | `EnvironmentError: HF_TOKEN not found` | Add `HF_TOKEN=hf_...` to your `.env` file |
-| `model not found` in Ollama | Run `ollama pull meditron:7b` (or your configured model) |
+| `model not found` in Ollama | Run `ollama pull mistral:7b` (or your configured model) |
 | Slow first query | Normal — the embedding model downloads on first use (~1.3 GB). Subsequent queries reuse the cached model. |
 | `CUDA out of memory` | Set `cuda: False` in `config/model.yaml` to use CPU embeddings, or use a smaller model. |
 | UI elements not rendering | Ensure `gradio>=5.0.0` is installed. Run `pip install --upgrade gradio`. |
@@ -225,4 +225,4 @@ The Gradio 5.x web interface. Features a custom dual-theme CSS system (dark/ligh
 
 ## License
 
-This project is for **research and educational purposes only**. Always consult a qualified healthcare professional for medical advice.
+This project is for **research and educational purposes only**. Always consult a qualified compliance professional for legal advice.
