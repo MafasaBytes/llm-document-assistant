@@ -5,7 +5,7 @@
 A local, privacy-first RAG (Retrieval-Augmented Generation) pipeline for question-answering over risk and compliance PDF documents. Upload a PDF, ask natural-language questions, and get sourced answers — all running on your own hardware via Ollama.
 
 ## UI Overview
-<img width="1898" height="987" alt="image" src="https://github.com/user-attachments/assets/32b6e47e-b7de-4449-967c-fffa689fc817" />
+<img width="1908" height="1052" alt="image" src="https://github.com/user-attachments/assets/99c61e2d-0924-4c94-af87-1c67561ea3c8" />
 ---
 
 ## Features
